@@ -1,6 +1,7 @@
 package com.example.mypratice.viewmodel;
 
 import android.database.Observable;
+import android.util.Log;
 
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
@@ -19,9 +20,17 @@ public class NameModel extends ViewModel {
 
     public NameModel(){
         userRepository = new UserRepository();
-        nameval.set("This is first one");
+        //nameval.set("This is first one");
+        userRepository.loginUser("kavin");
         data = userRepository.getResponse();
 
+
+    }
+
+    public void login(){
+        userRepository.loginUser("lucy");
+        data = userRepository.getResponse();
+        Log.d("loginval"," "+data.getValue());
 
     }
 

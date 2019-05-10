@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void getData() {
 
-                nameModel.nameval.set("This is update one");
-                //nameModel.data.setValue("This is very first approach of Data Binding");
+               nameModel.login();
             }
         });
     }
