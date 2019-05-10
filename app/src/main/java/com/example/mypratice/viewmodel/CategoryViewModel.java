@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.mypratice.R;
 import com.example.mypratice.model.Categories;
+import com.example.mypratice.remote.UserRepository;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class CategoryViewModel extends ViewModel {
     private ArrayList<CategoryViewModel> arrayList;
 
 
+    private UserRepository userRepository;
+
     public String getImageUrl(){
         return imagepath;
     }
@@ -37,6 +40,8 @@ public class CategoryViewModel extends ViewModel {
 
     public CategoryViewModel(){
 
+        userRepository = new UserRepository();
+        arrayListMutableLiveData = userRepository.getArrayListMutableLiveData();
 
 
     }
@@ -51,7 +56,7 @@ public class CategoryViewModel extends ViewModel {
     }
 
     public MutableLiveData<ArrayList<CategoryViewModel>> getArrayListMutableLiveData() {
-
+/*
         arrayList = new ArrayList<>();
         Categories categories = new Categories("1","title1","description1","image1.png");
         CategoryViewModel categoryViewModel = new CategoryViewModel(categories);
@@ -59,7 +64,10 @@ public class CategoryViewModel extends ViewModel {
 
         arrayListMutableLiveData.setValue(arrayList);
 
+  */
+
 
         return arrayListMutableLiveData;
+
     }
 }
