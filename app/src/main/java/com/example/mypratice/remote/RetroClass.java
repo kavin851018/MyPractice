@@ -1,5 +1,8 @@
 package com.example.mypratice.remote;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.mypratice.model.Ticket;
 
 import retrofit2.Call;
@@ -42,5 +45,27 @@ public class RetroClass {
         });
 
         return ticket;
+    }
+
+    public LiveData<Ticket> getTicketLiveData(){
+
+        final MutableLiveData<Ticket> mutableLiveData = new MutableLiveData<>();
+        APIService apiService = RetroClass.getAPIService();
+        apiService.getTicketJSON().enqueue(new Callback<Ticket>() {
+            @Override
+            public void onResponse(Call<Ticket> call, Response<Ticket> response) {
+                Ticket tic = response.body();
+                mutableLiveData.setValue(tic);
+
+            }
+
+            @Override
+            public void onFailure(Call<Ticket> call, Throwable t) {
+
+            }
+        });
+
+        return mutableLiveData;
+
     }
 }

@@ -25,21 +25,22 @@ public class MainActivity extends AppCompatActivity {
         ticketdesc = (TextView) findViewById(R.id.ticketdesc);
 
         ticketViewModel = ViewModelProviders.of(this).get(TicketViewModel.class);
-        ticketViewModel.getTicketVal();
+        //ticketViewModel.getTicketVal();
+        ticketViewModel.getLiveDataVal();
 
 
     }
 
     public void getTicketView(View view){
-        String ticketidval = ticketViewModel.getTicketVal().getTicketid().toString();
+        String ticketidval = ticketViewModel.getLiveDataVal().getValue().getTicketid().toString();
 
         ticketid.setText(ticketidval);
 
-        String ticketnameval = ticketViewModel.getTicketVal().getTicketname().toString();
+        String ticketnameval = ticketViewModel.getLiveDataVal().getValue().getTicketname().toString();
 
         ticketname.setText(ticketnameval);
 
-        String ticketdescval = ticketViewModel.getTicketVal().getTicketdesc().toString();
+        String ticketdescval = ticketViewModel.getLiveDataVal().getValue().getTicketdesc().toString();
 
         ticketdesc.setText(ticketdescval);
     }

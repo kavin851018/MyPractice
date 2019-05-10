@@ -1,5 +1,6 @@
 package com.example.mypratice.viewmodel;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mypratice.model.Ticket;
@@ -10,6 +11,7 @@ public class TicketViewModel  extends ViewModel {
     private Ticket ticket;
 
     private RetroClass retroClass = new RetroClass();
+    private LiveData<Ticket> liveData;
 
     public Ticket getTicketVal(){
 
@@ -18,5 +20,14 @@ public class TicketViewModel  extends ViewModel {
         }
 
         return ticket;
+    }
+
+    public LiveData<Ticket> getLiveDataVal(){
+
+        if(liveData == null ){
+            liveData = retroClass.getTicketLiveData();
+        }
+
+        return liveData;
     }
 }
