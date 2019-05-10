@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = DataBindingUtil.setContentView(this , R.layout.activity_main);
         nameModel = ViewModelProviders.of(this).get(NameModel.class);
 
+        activityMainBinding.setNamemodel(nameModel);
 
         nameModel.getData().observe(this, new Observer<String>() {
             @Override
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.setPresenter(new Presenter() {
             @Override
             public void getData() {
-                nameModel.data.setValue("This is very first approach of Data Binding");
+
+                nameModel.nameval.set("This is update one");
+                //nameModel.data.setValue("This is very first approach of Data Binding");
             }
         });
     }
