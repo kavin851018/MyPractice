@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <!--  這裡怪怪的 為啥他加了class attribute-->
     <data>
-        <import type="android.databinding." />
+
         <variable
             name="categorymodel"
             type="com.example.mypratice.viewmodel.CategoryViewModel" />

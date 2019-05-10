@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mypratice.R;
 import com.example.mypratice.databinding.InnerlayoutBinding;
 import com.example.mypratice.viewmodel.CategoryViewModel;
+
 
 import java.util.ArrayList;
 
@@ -44,17 +46,36 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(@NonNull CustomView holder, int position) {
 
+        CategoryViewModel categoryViewModel = arrayList.get(position);
+        holder.bind(categoryViewModel);
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     class CustomView extends RecyclerView.ViewHolder{
+        private InnerlayoutBinding innerlayoutBinding;
         public CustomView(InnerlayoutBinding innerlayoutBinding){
 
-            super(InnerlayoutBinding.getBuildSdkInt());
+            super(innerlayoutBinding.getRoot());
+
+            this.innerlayoutBinding = innerlayoutBinding;
+        }
+
+        public void bind(CategoryViewModel categoryViewModel){
+            this.innerlayoutBinding.setCategorymodel(categoryViewModel);
+            innerlayoutBinding.executePendingBindings();
+        }
+
+        public InnerlayoutBinding getInnerlayoutBinding(){
+            return innerlayoutBinding;
         }
     }
+
+
+
+
 }
