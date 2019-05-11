@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="@{user.email}!"
+            android:text="@{user.email}"
             android:textSize="30dp" />
 
 
