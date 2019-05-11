@@ -33,7 +33,7 @@ public class NoteRepository {
     }
 
     public void deleteAllNotes(){
-        new DeleteNoteAsyncTask(noteDao).execute();
+        new DeleteAllNoteAsyncTask(noteDao).execute();
     }
 
     public LiveData<List<Note>> getAllNotes(){
